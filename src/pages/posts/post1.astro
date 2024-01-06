@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MyReactButton from './components/MyReactButton';
+import MyReactButtonStatic from './components/MyReactButtonStatic';
+import { getUser } from '../../services/user';
+
+const data = await getUser();
+---
+
+<Layout title="测试">
+  <div class="bg-white">
+    <div class="text-neutral-900 font-medium">I am first title</div>
+    <div class="text-neutral-600">没想到吧</div>
+    <MyReactButton client:load />
+    <MyReactButtonStatic />
+    <div>用户名字:{data.results[0].name.first}-{data.results[0].name.last}</div>
+  </div>
+</Layout>
